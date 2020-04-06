@@ -7,6 +7,8 @@ public class ProcessControl {
     public static void main(String[] args) {
         ProcessControl processControl = new ProcessControl();
         processControl.ifControl();
+        processControl.switchControl();
+        processControl.whileControl();
     }
 
     protected void ifControl() {
@@ -64,5 +66,60 @@ public class ProcessControl {
         } else {
             System.out.println("s1 不等于 s2");
         }
+    }
+
+    protected void switchControl() {
+        String fruit = "apple";
+        // switch用于多个 == 的判断，可以转换为if语句，但if语句不能都转为switch
+        // 每个case与最后的default都必须要写break;因为fall-through格则，匹配到的case后面的所以代码包括其它都要执行，除非遇到break;
+        switch (fruit) {
+            case "apple":
+                System.out.println("苹果");
+                break;
+            case "banana":
+                System.out.println("香蕉");
+                break;
+            default:
+                System.out.println("不知道什么水果");
+                break;
+        }
+
+        // java12增加了switch表达式语法，更简洁也避免了fall-through
+        switch (fruit) {
+            case "apple" -> System.out.println("苹果");
+            case "banana" -> System.out.println("香蕉");
+            default -> System.out.println("不知道什么水果");
+        }
+
+        // switch作为赋值表达式
+        String fruitName = switch (fruit) {
+            case "apple" -> "苹果";
+            case "banana" -> "香蕉";
+            default -> {
+                // 复杂语句使用{}包裹，并使用yield返回结果
+                String nothing = fruit + "不知是啥";
+                yield nothing;
+            }
+        };
+    }
+
+    protected void whileControl() {
+        int sum1 = 0;
+        int m1 = 20;
+        int n1 = 100;
+        while (m1 <= n1) {
+            sum1 += m1;
+            m1++;
+        }
+        System.out.println(sum1);
+
+        int sum2 = 0;
+        int m2 = 20;
+        int n2 = 100;
+        do {
+            sum2 += m2;
+            m2++;
+        } while (m2 <= n2);
+        System.out.println(sum2);
     }
 }
