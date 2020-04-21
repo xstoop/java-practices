@@ -1,12 +1,11 @@
-package april;
+package april.array;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 /**
  * @author xstoop
  */
-public class ArrayLoopAndSort {
+public class Main {
     public static void main(String[] args) {
         int[] a = new int[3];
         a[0] = 1;
@@ -56,9 +55,3 @@ public class ArrayLoopAndSort {
     }
 }
 
-class MyComparator implements Comparator<Integer> {
-    @Override
-    public int compare(Integer o1, Integer o2) {
-        return o2 - o1;
-    }
-}
