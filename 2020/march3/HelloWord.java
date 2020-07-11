@@ -1,0 +1,10 @@
+package march3;
+
+/**
+ * @author xstoop
+ */
+public class HelloWord {
+    public static void main(String[] args) {
+        System.out.println("Hello world!");
+    }
+}
