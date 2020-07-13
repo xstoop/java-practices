@@ -60,6 +60,15 @@ public class List {
 
         // 获取list的迭代器
         arrayList.iterator();
+
+        // list中是否包含某个元素
+        System.out.println(arrayList.contains("may"));
+
+        // 获取某个元素在list中的索引位置
+        System.out.println(arrayList.indexOf("may"));
+
+        // contains与indexOf方法中是通过遍历元素，然后调用被查找元素的equals()方法。当被查找元素时基本类型时，
+        // 其基本类型已有equals()方法的实现。如果list中存放的是引用类型元素，则要求被该引用对象需要实现equals()方法才能调用这两个方法。
     }
 
     /**
