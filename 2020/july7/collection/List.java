@@ -14,8 +14,8 @@ public class List {
         List studyList = new List();
         studyList.createList();
         studyList.listFunction();
-        studyList.listForeach();
-        studyList.listArraySwitch();
+//        studyList.listForeach();
+//        studyList.listArraySwitch();
     }
 
     /**
@@ -55,7 +55,7 @@ public class List {
         // 获取指定索引的元素
         System.out.println(arrayList.get(0));
 
-        // 获取list的元素格式
+        // 获取list的元素个数
         System.out.println(arrayList.size());
 
         // 获取list的迭代器
@@ -67,8 +67,19 @@ public class List {
         // 获取某个元素在list中的索引位置
         System.out.println(arrayList.indexOf("may"));
 
-        // contains与indexOf方法中是通过遍历元素，然后调用被查找元素的equals()方法。当被查找元素时基本类型时，
-        // 其基本类型已有equals()方法的实现。如果list中存放的是引用类型元素，则要求被该引用对象需要实现equals()方法才能调用这两个方法。
+        // contains与indexOf方法中是通过遍历元素，依次调用遍历元素的equals()方法与查找元素做比较。当被查找元素是基本类型时，
+        // 其基本类型已有equals()方法的实现，如String类型的元素的equals()方法会比较两个字符串对象存放的实际内容。
+        // 如果list中存放的是引用类型元素，在使用contains与indexOf方法时，要求被该引用对象需要实现equals()方法来判定这两个引用类型元素如何判定为相等。
+
+        java.util.List<Month> monthList = new ArrayList<>();
+
+        Month january = new Month("january", 31);
+        Month february = new Month("february", 30);
+        monthList.add(january);
+        monthList.add(february);
+        // 当month没有覆写equals方法时，使用contains()方法默认调用基类object的equals方法，contains返回为false
+        // 当覆写equals方法（只要两个不同的month对象的属性name与days都相等时就认为是同一个元素）这时就返回true
+        System.out.println(monthList.contains(new Month("january", 31)));
     }
 
     /**
