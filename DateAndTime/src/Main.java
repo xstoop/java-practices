@@ -8,6 +8,9 @@ import java.time.temporal.TemporalAdjusters;
  */
 public class Main {
     public static void main(String[] args) {
+        // 时间戳转换为时间
+        String time = Instant.ofEpochSecond(1577931628).atZone(ZoneId.of("Asia/Shanghai")).toLocalDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
         // 获取当前时间戳:毫秒
         System.out.println(System.currentTimeMillis());
         System.out.println(Instant.now().getEpochSecond());
@@ -16,7 +19,15 @@ public class Main {
         // java.util.date,java.util.SimpleDateFormat,java.util.Calendar
 
         // 从Java 8开始，java.time包提供了新的日期和时间API:
-        // 本地日期和时间：LocalDateTime，LocalDate，LocalTime
+        new Main().newVersionDateTimeExample();
+    }
+
+    public void newVersionDateTimeExample() {
+        /*
+         * java.time.LocalDateTime 日期与时间
+         * java.time.LocalDate 日期
+         * java.time.LocalTime 时间
+         */
 
         // 当前日期
         LocalDate date = LocalDate.now();
@@ -41,7 +52,7 @@ public class Main {
         // 自定义时间格式 DateTimeFormatter
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         System.out.println(dateTimeFormatter.format(dateTime3));
-        // 将时间解析成指定格式
+        // 指定格式解析时间
         LocalDateTime dateTime4 = LocalDateTime.parse("2020-12-20 17:46:20", dateTimeFormatter);
 
         // 使用LocalDateTime对日期和时间进行加减
