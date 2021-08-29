@@ -1,5 +1,3 @@
-package april4;
-
 import java.util.Scanner;
 
 /**

@@ -1,4 +1,3 @@
-package march3;
 
 /**
  * @author xstoop
@@ -74,5 +73,16 @@ public class JavaBasicDataType {
         System.out.println(s);
 
         // System.out.println(stringArray[31]); 所以超出范围将会报错
+
+        // 数组遍历
+        // 使用标准的for循环
+        for (int i = 0; i< intArray2.length; i++) {
+            System.out.println(intArray2[i]);
+        }
+
+        // 使用for each循环
+        for (int value : intArray2) {
+            System.out.println(value);
+        }
     }
 }
