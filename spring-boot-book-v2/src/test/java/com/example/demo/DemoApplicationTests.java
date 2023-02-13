@@ -1,8 +1,10 @@
 package com.example.demo;
 
 import com.example.demo.model.AyUser;
+import com.example.demo.service.AyUserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -16,6 +18,9 @@ class DemoApplicationTests {
 
     @Resource
     private JdbcTemplate jdbcTemplate;
+
+    @Resource
+    private ApplicationContext applicationContext;
 
     @Test
     void contextLoads() {
@@ -40,5 +45,10 @@ class DemoApplicationTests {
         for (AyUser user : userList) {
             System.out.println("[id]:" + user.getId() + ";[name]:" + user.getName() + ";[password]:" + user.getPassword());
         }
+    }
+
+    @Test
+    public void iocTest() {
+        System.out.println(applicationContext.getBean(AyUserService.class));
     }
 }
