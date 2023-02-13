@@ -1,6 +1,7 @@
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
+import java.util.HashMap;
 
 /**
  * @author xstoop
@@ -8,18 +9,49 @@ import java.time.temporal.TemporalAdjusters;
  */
 public class Main {
     public static void main(String[] args) {
-        // 时间戳转换为时间
-        String time = Instant.ofEpochSecond(1577931628).atZone(ZoneId.of("Asia/Shanghai")).toLocalDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
-        // 获取当前时间戳:毫秒
+        // 2021.12.06　17：00：00～2021.12.31　23：59：59
+        long nowTimeStamp = System.currentTimeMillis() / 100;
+        long endTimeStamp = 1640966399;
+        long beginTimeStamp = 0;
+
+        if (false) {
+            beginTimeStamp = 1638781200;
+        }
+
+        System.out.println(beginTimeStamp);
+        System.out.println(endTimeStamp);
         System.out.println(System.currentTimeMillis());
-        System.out.println(Instant.now().getEpochSecond());
+        System.out.println(System.currentTimeMillis()/1000);
 
-        // 时间处理:java.util.* 旧版的时间api
-        // java.util.date,java.util.SimpleDateFormat,java.util.Calendar
+        if (beginTimeStamp <= nowTimeStamp && nowTimeStamp <= endTimeStamp) {
+            System.out.println("enable");
+        } else {
+            System.out.println("disable");
 
-        // 从Java 8开始，java.time包提供了新的日期和时间API:
-        new Main().newVersionDateTimeExample();
+        }
+
+        System.out.println(nowTimeStamp <= endTimeStamp & beginTimeStamp <= nowTimeStamp);
+        System.out.println();
+        System.out.println(nowTimeStamp);
+
+        HashMap<String, String> result = new HashMap<>(1);
+        result.put("status", (beginTimeStamp <= nowTimeStamp && nowTimeStamp <= endTimeStamp) ? "enable" : "disable");
+        System.out.println(result);
+//
+//
+//        // 时间戳转换为时间
+//        String time = Instant.ofEpochSecond(1577931628).atZone(ZoneId.of("Asia/Shanghai")).toLocalDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+//
+//        // 获取当前时间戳:毫秒
+//        System.out.println(System.currentTimeMillis());
+//        System.out.println(Instant.now().getEpochSecond());
+//
+//        // 时间处理:java.util.* 旧版的时间api
+//        // java.util.date,java.util.SimpleDateFormat,java.util.Calendar
+//
+//        // 从Java 8开始，java.time包提供了新的日期和时间API:
+//        new Main().newVersionDateTimeExample();
     }
 
     public void newVersionDateTimeExample() {
